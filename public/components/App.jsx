@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
-const App = () => (
-  <div>Pies</div>
-);
+import Table from "../components/Table/Table.jsx";
+
+const App = () => {
+  const [companies, setCompanies] = useState([]);
+
+  fetch("/report")
+    .then(res => res.json())
+    .then(data => setCompanies(data))
+
+  return <Table />
+};
 
 export default App;
