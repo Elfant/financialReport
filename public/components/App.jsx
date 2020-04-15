@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-import Table from "../components/Table/Table.jsx";
+import TableCompanies from "../components/TableCompanies/TableCompanies.jsx";
 
 const App = () => {
   const [companies, setCompanies] = useState([]);
 
-  fetch("/report")
+  useEffect(() => {
+    fetch("http://localhost:8000/report")
     .then(res => res.json())
     .then(data => setCompanies(data))
+  }, [])
 
-  return <Table />
+  return <TableCompanies data = {companies.companies}/>
 };
 
 export default App;

@@ -2,8 +2,9 @@ const express = require("express");
 const fetch = require("node-fetch");
 const path = require("path");
 
-const joinDataFromRequests = require("./utils/joinDataFromRequests"); 
+const getCompanies = require("./utils/getCompanies"); 
 
+getCompanies()
 
 const port = process.env.PORT || 8000;
 
@@ -14,7 +15,9 @@ const publicDirectoryPath = path.join(__dirname, "../build");
 app.use(express.static(publicDirectoryPath));
 
 app.get("/report", (req, resp) => {
-  joinDataFromRequests()
+  resp.append('Access-Control-Allow-Origin', '*');
+
+  getCompanies()
     .then((data) => {
       resp.send(data)
       }

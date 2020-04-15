@@ -1,7 +1,5 @@
 const fetch = require("node-fetch");
 
-const fetchCompanies = require("./fetchCompanies");
-
 const apiUrl = "https://recruitment.hal.skygate.io/incomes/";
 
 const fetchIncomes = async (companies) => {
