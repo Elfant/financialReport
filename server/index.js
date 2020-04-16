@@ -4,8 +4,6 @@ const path = require("path");
 
 const getCompanies = require("./utils/getCompanies"); 
 
-getCompanies()
-
 const port = process.env.PORT || 8000;
 
 const app = express();
@@ -22,7 +20,6 @@ app.get("/report", (req, resp) => {
       resp.send(data)
       }
     )
-  
 });
 
 // app.get("*", (req, resp) => {

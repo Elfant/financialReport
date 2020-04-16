@@ -11,7 +11,7 @@ const App = () => {
     .then(data => setCompanies(data))
   }, [])
 
-  return <TableCompanies data = {companies.companies}/>
+  return <TableCompanies data = {companies}/>
 };
 
 export default App;

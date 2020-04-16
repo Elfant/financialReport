@@ -1,17 +1,16 @@
-const operationsOnIncomes = ({incomes}) => {
+const operationsOnIncomes = ({incomes, id}) => {
 
   const reduce = (objects) => {
     return (
       objects.reduce(
         (accumulator, next) => accumulator + parseInt(next.value), 0
       )
-    )
-  }
+    );
+  };
 
   const numberOfTheElements = incomes.length;
 
-  const sumOfCompanyIncomes = reduce(incomes) // item[0]260014
-  console.log(sumOfCompanyIncomes)
+  const sumOfCompanyIncomes = reduce(incomes); // item[0]260014
 
   const averageIncomes = sumOfCompanyIncomes / numberOfTheElements; 
 
@@ -28,9 +27,15 @@ const operationsOnIncomes = ({incomes}) => {
     return year === yearFromItem && month - monthFromItem === 1;
   })
 
-  const sumOfTheLastMonthIn = reduce(filtredIncomes); //sum from last month
+  const sumOfTheLastMonthIncomes = reduce(filtredIncomes); //sum from last month
 
- }
+  return {
+    id,
+    sumOfCompanyIncomes,
+    averageIncomes,
+    sumOfTheLastMonthIncomes
+  };
+ };
  
 module.exports = operationsOnIncomes;
 

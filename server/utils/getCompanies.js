@@ -9,14 +9,16 @@ const getCompanies = async () => {
   
   const incomes = await fetchIncomes(companies);
 
-  operationsOnIncomes(incomes[0])
-  // console.log(incomes)
+  let scoresOfOperation = [];
 
-  
+  incomes.forEach((item, i) => {
+    scoresOfOperation[i] = operationsOnIncomes(incomes[i], )
+  })
+
   return {
-     companies,
+    companies,
+    scoresOfOperation,
   }
-
 }
 
 module.exports = getCompanies;
