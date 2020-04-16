@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Table = ({data}) => {
+const Table = ({data , setCompanies}) => {
   const {companies, scoresOfOperation} = data;
+  const [isFiltredDesc, setIsFiltredDesc] = useState(false)
+  
+  const handleDataSorting = (items) => {
+    if (isFiltredDesc) {
+      setIsFiltredDesc(false);
+      return items.sort((a,b) => b.id - a.id)
+    } else {
+        setIsFiltredDesc(true);
+        return  items.sort((a, b) => a.id - b.id);
+    } 
+  }
+  
   return (
     companies ?
     <table>
       <thead>
         <tr>
-          <th>Id</th>
+          <th onClick = {() => {
+            setCompanies(
+              {
+                companies: handleDataSorting(companies), 
+                scoresOfOperation: handleDataSorting(scoresOfOperation)
+              }
+            )
+          }}>Id
+          </th>
           <th>Name</th>
           <th>City</th>
           <th>Total income</th>
@@ -33,8 +53,7 @@ const Table = ({data}) => {
       </tbody>
     </table>
    : "load" 
-  ) 
- 
+  ); 
 };
 
 export default Table;

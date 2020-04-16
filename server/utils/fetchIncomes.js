@@ -7,7 +7,7 @@ const fetchIncomes = async (companies) => {
     fetch(`${apiUrl}${company.id}`)
     .then(resp => resp.json())
   ));
-   return Promise.all(promises)
-}
+   return Promise.all(promises);
+};
 
 module.exports = fetchIncomes;
