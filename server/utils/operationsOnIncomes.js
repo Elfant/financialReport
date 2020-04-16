@@ -30,7 +30,7 @@ const operationsOnIncomes = ({incomes, id}) => {
   const sumOfTheLastMonthIncomes = reduce(filtredIncomes); //sum from last month
 
   return {
-    id,
+    incomesId: id,
     sumOfCompanyIncomes,
     averageIncomes,
     sumOfTheLastMonthIncomes

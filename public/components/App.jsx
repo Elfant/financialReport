@@ -4,6 +4,7 @@ import TableCompanies from "../components/TableCompanies/TableCompanies.jsx";
 
 const App = () => {
   const [companies, setCompanies] = useState([]);
+  const [filtredCompanies, setFiltredCompanies] = useState([])
 
   useEffect(() => {
     fetch("http://localhost:8000/report")
@@ -11,7 +12,12 @@ const App = () => {
     .then(data => setCompanies(data))
   }, [])
 
-  return <TableCompanies data = {companies} setCompanies = {setCompanies}/>
+  return (
+    <TableCompanies 
+      data = {filtredCompanies.length === 0 ? companies : filtredCompanies} 
+      setFiltredCompanies = {setFiltredCompanies}
+    />
+  )
 };
 
 export default App;

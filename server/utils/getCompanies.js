@@ -12,13 +12,16 @@ const getCompanies = async () => {
   let scoresOfOperation = [];
 
   incomes.forEach((item, i) => {
-    scoresOfOperation[i] = operationsOnIncomes(incomes[i], )
-  })
+    scoresOfOperation[i] = operationsOnIncomes(incomes[i])
+  });
 
-  return {
-    companies,
-    scoresOfOperation,
-  }
-}
+  let joinedData = [];
+
+  companies.forEach((item,i) => {
+    joinedData[i] = {...item, ...scoresOfOperation[i]}
+  });
+  
+  return joinedData;
+};
 
 module.exports = getCompanies;
