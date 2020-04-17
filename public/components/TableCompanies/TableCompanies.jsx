@@ -1,40 +1,41 @@
 import React, { useState } from "react";
 
-const Table = ({ data, setFiltredCompanies }) => {
-  const [isSortedById, setIsSortedById] = useState(false)
+const Table = ({ data, filterByInput, filtredData, setFiltredData}) => {
   
+  const [isSortedById, setIsSortedById] = useState(false)
+
   const handleDataSortingById = (items) => {
     if (isSortedById) {
       setIsSortedById(false);
-      return items.sort((a,b) => b.id - a.id)
+       items.sort((a,b) => b.id - a.id)
     } else {
-        setIsSortedById(true);
-        return  items.sort((a, b) => a.id - b.id);
-    } 
-  }
+      setIsSortedById(true);
+      items.sort((a, b) => a.id - b.id);
+    };
 
-  let temp;
+    setFiltredData(items)
+  };
 
-  const handleFilteringByInput = (event) => {
-    const { value } = event.target;
-    temp = data.filter(item => {
-      return item.id == value || item.name == value || item.city == value || item.sumOfCompanyIncomes == value || item.averageIncomes == value || item.sumOfTheLastMonthIncomes == value;
-    })
-    return temp;
-  }
+  const getItemsToRender = () => {
+    if (filtredData.length !== 0) {
+      return filtredData
+    } else {
+        return data
+    }
+  };
 
   return (
     data.length > 0 ?
     <>
       <label>
-        Enter a filter <input type= "text" placeholder="" onChange={(event) => setFiltredCompanies(handleFilteringByInput(event))}/>
+        Enter a filter <input type= "text" placeholder="" onChange={(event) => filterByInput(event)}/>
       </label>
    
       <table>
         <thead>
           <tr>
             <th onClick = {() => {
-              setFiltredCompanies(handleDataSortingById(data))
+              handleDataSortingById([...data])
             }}>Id
             </th>
             <th>Name</th>
@@ -46,7 +47,8 @@ const Table = ({ data, setFiltredCompanies }) => {
         </thead>
         <tbody>
           {
-            data.map((item, i) => {
+
+            getItemsToRender().map((item, i) => {
               return(
                 <tr key={item.id}>
                   <td>{item.id}</td>
