@@ -10,7 +10,7 @@ const operationsOnIncomes = ({incomes, id}) => {
 
   const numberOfTheElements = incomes.length;
 
-  const sumOfCompanyIncomes = reduce(incomes); // item[0]260014
+  const sumOfCompanyIncomes = reduce(incomes); 
 
   const averageIncomes = sumOfCompanyIncomes / numberOfTheElements; 
 
@@ -25,9 +25,9 @@ const operationsOnIncomes = ({incomes, id}) => {
     const monthFromItem = date.getMonth();
 
     return year === yearFromItem && month - monthFromItem === 1;
-  })
+  });
 
-  const sumOfTheLastMonthIncomes = reduce(filtredIncomes); //sum from last month
+  const sumOfTheLastMonthIncomes = reduce(filtredIncomes); 
 
   return {
     incomesId: id,
@@ -38,5 +38,3 @@ const operationsOnIncomes = ({incomes, id}) => {
  };
  
 module.exports = operationsOnIncomes;
-
-//where year === current year and month < current month -1

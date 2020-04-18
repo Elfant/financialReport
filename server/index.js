@@ -22,10 +22,6 @@ app.get("/report", (req, resp) => {
     )
 });
 
-// app.get("*", (req, resp) => {
-//   resp.sendFile(publicDirectoryPath);
-// });
-
 app.listen(port, () => 
   console.log(`Server is up on ${port}`)
 );

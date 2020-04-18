@@ -1,7 +1,9 @@
-* {
-  color: #d9d1d1;
-  box-sizing: border-box;
-}
+@import "../scss//variables.scss";
+  
+  * {
+    color: #d9d1d1;
+    box-sizing: border-box;
+  }
 
   body {
     font-family: 'Courier New', Courier, monospace;
@@ -11,20 +13,31 @@
   }
 
   .container {
-    max-width: 1200px;
-    margin: auto;
+    max-width: 400px;
+    overflow: auto;
   }
 
+  @media(min-width: 600px) {
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+  }
+ 
   .footer {
-    display: flex;
-    margin-top: 10px;
-    justify-content: space-around;
+    position: fixed;
+    left: 50%;
+    bottom: $spacing-x1;
+    transform: translateX(-50%);
   }
 
   .btn {
     background: none;
     outline: none;
     border: none;
-    font-size: 40px;
+    font-size: $spacing-x8;
     font-weight: bold;
+    &:hover {
+      cursor: pointer;
+    }
   }

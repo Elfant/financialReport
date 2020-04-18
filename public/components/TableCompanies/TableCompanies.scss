@@ -1,29 +1,40 @@
-.header {
-  margin: 15px auto;
-  padding-left: 45px;
+  @import "../../scss/variables.scss";
   
-  &Input {
-    background: none;
-    border: none;
-    outline: none;
-    font-size: 30px;
+  .header {
+    margin: $spacing-x3 auto;
+    padding-left: $spacing-x5;
+    height: $spacing-x6;
+    position: absolute;
 
-  }&:before {
-    content: "Enter filter:";
-    display: inline;
-    font-size: 30px;
-    font-weight: bold;
+    &Input {
+      background: none;
+      border: none;
+      outline: none;
+      font-size: 25px;
+      max-width: 200px;
+      border-bottom: 0.2px solid #b9b4b4;
+
+    }&:before {
+      content: "Search:";
+      font-size: 25px;
+      font-weight: bold;
+    }
   }
-}
   
   .tableCompanies {
-    margin: auto;
+    padding: 0 $spacing-x2;
+    margin: 80px auto $spacing-x10 auto;
   }
 
   .tableCompanies td, th {
-    padding: 5px;
+    padding: $spacing-x1;
     box-shadow: 0 0 0 0.5px white;
     outline: 0.5px dashed black;
     text-align: left;
-    padding-left: 10px;
+    padding-left: $spacing-x2;
+  }
+
+  th:first-child:hover {
+    color: #e65656;
+    cursor: pointer;
   }

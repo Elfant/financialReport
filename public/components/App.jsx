@@ -37,20 +37,19 @@ const App = () => {
     };
   };
 
-  
-  useEffect(() =>  setFiltredData([]), [pageNumber])
+  useEffect(() =>  setFiltredData([]), [pageNumber]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/report")
+    fetch("/report")
     .then(res => res.json())
-    .then(data => setCompanies(data))
-  }, [])
+    .then(data => setCompanies(data));
+  }, []);
 
    const handleFilteringByInput = (event) => {
     const { value } = event.target;
 
     if(!value) {
-      return setFiltredData([])
+      return setFiltredData([]);
     };
 
      const matchingData = [...companies].filter(item => {
