@@ -1,0 +1,29 @@
+.header {
+  margin: 15px auto;
+  padding-left: 45px;
+  
+  &Input {
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 30px;
+
+  }&:before {
+    content: "Enter filter:";
+    display: inline;
+    font-size: 30px;
+    font-weight: bold;
+  }
+}
+  
+  .tableCompanies {
+    margin: auto;
+  }
+
+  .tableCompanies td, th {
+    padding: 5px;
+    box-shadow: 0 0 0 0.5px white;
+    outline: 0.5px dashed black;
+    text-align: left;
+    padding-left: 10px;
+  }

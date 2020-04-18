@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const Table = ({ data, filterByInput, filtredData, setFiltredData}) => {
+import "../TableCompanies/TableCompanies.scss";
+
+const TableCompanies = ({ data, filterByInput, filtredData, setFiltredData }) => {
   
   const [isSortedById, setIsSortedById] = useState(false)
 
@@ -12,7 +14,7 @@ const Table = ({ data, filterByInput, filtredData, setFiltredData}) => {
       setIsSortedById(true);
       items.sort((a, b) => a.id - b.id);
     };
-
+    
     setFiltredData(items)
   };
 
@@ -27,13 +29,17 @@ const Table = ({ data, filterByInput, filtredData, setFiltredData}) => {
   return (
     data.length > 0 ?
     <>
-      <label>
-        Enter a filter <input type= "text" placeholder="" onChange={(event) => filterByInput(event)}/>
-      </label>
-   
-      <table>
+      <div className="header">
+        <input 
+          type= "text" 
+          className= "headerInput" 
+          placeholder= "" 
+          onChange= {(event) => filterByInput(event)}
+        />
+      </div>
+      <table className= "tableCompanies">
         <thead>
-          <tr>
+          <tr className= "tableCompaniesRow">
             <th onClick = {() => {
               handleDataSortingById([...data])
             }}>Id
@@ -50,13 +56,13 @@ const Table = ({ data, filterByInput, filtredData, setFiltredData}) => {
 
             getItemsToRender().map((item, i) => {
               return(
-                <tr key={item.id}>
+                <tr key= {item.id} className= "tableCompaniesRow">
                   <td>{item.id}</td>
                   <td>{item.name}</td>
                   <td>{item.city}</td>
-                  <td>{item.sumOfCompanyIncomes} pln</td>
-                  <td>{item.averageIncomes} pln</td>
-                  <td>{item.sumOfTheLastMonthIncomes} pln</td>
+                  <td>{item.sumOfCompanyIncomes} PLN</td>
+                  <td>{item.averageIncomes} PLN</td>
+                  <td>{item.sumOfTheLastMonthIncomes} PLN</td>
                 </tr>
               )
             })
@@ -68,4 +74,4 @@ const Table = ({ data, filterByInput, filtredData, setFiltredData}) => {
   ); 
 };
 
-export default Table;
+export default TableCompanies;
