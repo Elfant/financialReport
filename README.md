@@ -1,4 +1,4 @@
-# Finacial report 
+# Financial report 
 
   ## **Technologies:**
     * Html
